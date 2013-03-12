@@ -1,0 +1,119 @@
+\documentclass{article}
+\usepackage{fontspec,xunicode,polyglossia}		% Support unicode
+\setmainfont{Linux Libertine O}					% Police partout, justice nul part
+\setmainlanguage{french}						% Langue de molière
+\usepackage[a4paper]{geometry}					% Taille du papier
+\usepackage{csquotes}							% Pour gérer finement les citations
+\usepackage{hyperref}							% Liens dans le PDF
+% Bibliographie
+\usepackage[citestyle=verbose]{biblatex}
+\bibliography{comparatif-logiciels}
+\renewcommand{\newunitpunct}[0]{\addcomma\addspace}
+% En tête et pied de page
+\usepackage{fancyhdr}							
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\lhead{Maïeul Rouquette}
+\rhead{Logiciels d'ecdotique}
+\chead{}
+\lfoot{\href{https://creativecommons.org/licenses/by-sa/3.0/fr/}{Licence CC Fr 3.0 Paternité - Partage à l'Identique}}
+\rfoot{\thepage}
+\cfoot{}
+\begin{document}
+\author{Maïeul Rouquette}
+\title{Comparatif succinct de quelques outils informatiques pour l'édition critique\footnote{Sources disponibles sur \url{http://github.com/maieul/logiciels-ecodtique}.}}
+
+\maketitle\thispagestyle{fancy}
+\tableofcontents
+\section{Pour les éditions papiers}
+\subsection{Word ou LibreOffice}
+
+\subsubsection{Avantages}
+\begin{itemize}
+	\item Rien à apprendre.
+	\item Très répandu.
+	\item Utilisable en lien avec Zotero pour la bibliographie.
+\end{itemize}
+
+\subsubsection{Inconvénients}
+\begin{itemize}
+	\item Pas du tout adapté pour produire des notes critiques.
+	\item Pas du tout adapté pour gérer des éditions en parallèle.
+	\item Typographie de médiocre qualité.
+\end{itemize}
+
+\subsection{Logiciel de PAO (Indesign, Scribus etc.)}
+
+\subsubsection{Avantages}
+\begin{itemize}
+	\item Permet de gérer finement la typographie.
+\end{itemize}
+
+\subsubsection{Inconvénients}
+\begin{itemize}
+	\item On doit tout faire \enquote{à la main} : pas d'outil pour gérer les éditions en parallèle ou la numérotation automatique des lignes associées aux notes.
+	\item Les logiciels propriétaires sont très chers.
+	\item Souvent formats propriétaires.
+\end{itemize}
+
+Logiciels plus pour l'éditeur que pour l'auteur.
+
+\subsection{Classical Text Editor}
+\subsubsection{Avantages}
+\begin{itemize}
+	\item Prévu spécifiquement pour les éditions critiques et les notes en parallèles.
+	\item Fréquemment mis à jour.
+	\item Outils d'export vers divers formats.
+\end{itemize}
+
+\subsubsection{Inconvénients}
+\begin{itemize}
+	\item Pas de module de gestion bibliographique.
+	\item Format propriétaire gênant la pérennité des données dans le temps.
+	\item Assez cher.
+\end{itemize}
+
+\subsection{\LaTeX{} + eledmac/eledpar}
+\subsubsection{Avantages}
+\begin{itemize}
+	\item Logiciel libre et gratuit.
+	\item Format ouvert.
+	\item Format \enquote{texte formaté} permettant d'utiliser des outils de suivi des versions et de travail collaboratif.
+	\item Outre l'édition critique et les textes en parallèle, gère notamment :
+		\begin{itemize}
+			\item Index, dont biblique.
+			\item Bibliographie, avec ou sans indexation des références.
+			\item Dessin vectoriel, permettant de tracer des stemma.
+		\end{itemize}
+	\item Deux livres récents sur le sujet\footnote{C'est deux livres parlent de ledmac et non de eledmac. Le débutant commencera directement avec eledmac.} :
+		\begin{itemize}
+		\item \cite[disponible également en libre téléchargement]{Rouquette2012}.
+		\item \cite{leal2012}.
+		\end{itemize}
+\end{itemize}
+
+\subsubsection{Inconvénients}
+	\begin{itemize}
+		\item Nécessite un petit temps de prise en main.
+		\item Quelques cas typographiques non gérables.
+		\item Export vers d'autres formats que PDF assez difficile.
+	\end{itemize}
+\section{Pour le WEB}
+\subsection{Principe}
+On encodera les données selon la \enquote{norme} XML-TEI à l'aide d'un éditeur de texte, éventuellement spécialisé. Puis on transformera ces données en pages web grâce à une feuille de style XLST.
+
+\subsection{Avantages}
+\begin{itemize}
+	\item Format libre et ouvert, normé.
+	\item Format \enquote{texte formaté} permettant d'utiliser des outils de suivi des versions et de travail collaboratif.
+	\item Possibilité d'encoder de nombreuses données.
+\end{itemize}
+
+\subsection{Inconvénients}
+\begin{itemize}
+	\item Vocabulaire très riche, donc un certain temps est nécessaire pour l'acquérir.
+	\item Comme on peut encoder beaucoup plus de détails que ce qu'on mettrait sur une version papier, on prend plus de temps.
+	\item Il faut quasiment prévoir une feuille XLST par projet. Si le XML-TEI est assez simple à apprendre, le XLST est plus complexe. Peu adapté pour les doctorants n'ayant pas l'âme d'un codeur et n'étant pas dans un projet collectif.
+\end{itemize}
+\end{document}
